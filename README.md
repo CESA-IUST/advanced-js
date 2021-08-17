@@ -6,7 +6,7 @@ Consider these steps after cloning the project:
 ```bash
   node -v
 ```
-Getting vxx.xx.xx as output means it's installed, otherwise download Node.js installer for your OS through this [link](https://nodejs.org/en/download/)
+Getting v[xx].[xx].[xx] as output means it's installed, otherwise download Node.js installer for your OS through this [link](https://nodejs.org/en/download/).
 - Then, you should install your node modules by running the following command in your cmd:
 ```bash
   npm install
