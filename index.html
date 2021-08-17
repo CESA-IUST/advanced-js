@@ -7,6 +7,44 @@
   <title>Advanced JS</title>
 </head>
 <body>
-  <script src="prototype.js"></script>
+  <button id="button">Get Data</button>
+  <div id="text"></div>
+  <script>
+    document.getElementById('button')
+    .addEventListener('click', getDataFromGithub);
+
+    // document.getElementById('button')
+    // .addEventListener('click', getDataFromStaticFile);
+
+    function getDataFromStaticFile() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'data/sample.txt', true);
+
+      xhr.onload = function() {
+        document.getElementById('text').innerHTML = this.responseText; 
+      }
+      xhr.send();
+    }
+
+    function getDataFromGithub() {
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://api.github.com/users', true);
+
+      xhr.onload = function() {
+        const response = JSON.parse(this.response); 
+        console.log(response);
+
+        document.getElementById('text').innerHTML += '<ul>';
+        response.forEach(element => {
+          document.getElementById('text').innerHTML 
+          += `<li>${element.login}</li>`;
+        });
+
+        document.getElementById('text').innerHTML += '</ul>';
+      }
+      xhr.send();
+    }
+
+  </script>
 </body>
 </html>
